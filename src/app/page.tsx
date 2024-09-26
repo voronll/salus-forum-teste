@@ -134,29 +134,27 @@ export default function Home() {
 
       {/* SUB-HEADER */}
       <div className="flex justify-center py-10">
-        <Card className="w-full max-w-7xl bg-zinc-900 p-6 rounded-lg shadow-lg flex items-center space-x-6">
-          {/* Imagem à esquerda */}
-          <div className="w-1/3">
+        <Card className="w-full max-w-7xl bg-zinc-900 p-6 rounded-lg shadow-lg flex items-center">
+
+          <div className="">
             <Image
               src={SalusLogo}
-              alt="Imagem descritiva"
+              alt="salus-logo"
               width={150}
               height={150}
               className="rounded-lg object-cover"
             />
           </div>
-
-          {/* Texto à direita */}
-          <div className="w-2/3">
+          <div> 
             <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
               O que você vai encontrar na Salus?
             </h2>
             <p className="text-orange-400 pt-5 font-bold">
-              A Salus contém um arsenal de conteúdo infinito sobre a área mais interessante da computação,
-              explore sem medo e aproveite todo o conteúdo que nós temos a oferecer.
+              Um vasto oceano de conteúdo relacionado exclusivamente a Segurança da Informação! Se aventure em tópicos, discuta e aprenda tudo sobre a área mais requisitada de TI.
             </p>
           </div>
         </Card>
+
       </div>
     </div>
   );
