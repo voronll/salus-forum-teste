@@ -40,7 +40,7 @@ Este repositório contém o código-fonte do Salus, um projeto desenvolvido como
 Este projeto foi desenvolvido exclusivamente para fins acadêmicos e de aprendizado. Não deve ser utilizado em ambientes de produção sem uma revisão adequada das práticas de segurança e conformidade.
 
 #
-<br><br><br>
+<br>
 
 ## Entendendo as decições arquiteturais e a estrutura do projeto
 
