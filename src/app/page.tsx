@@ -2,6 +2,7 @@ import SalusLogo from "@/app/assets/SalusLogoV2.png";
 import { Card } from "@nextui-org/card";
 import Head from "next/head";
 import Image from "next/image";
+import Header from "./components/header";
 
 export default function Home() {
   return (
@@ -12,60 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <header className="bg-black w-full py-4 border-b-2 border-gray-600 flex justify-between items-center">
-        <a
-          href="/home_page"
-          className="flex items-center text-white no-underline"
-        >
-          <Image
-            src={SalusLogo}
-            alt="Logo"
-            width={70}
-            height={70}
-            className="mr-4"
-          />
-          <span className="text-3xl bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-            Salus
-          </span>
-        </a>
-
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <a
-                href="#"
-                className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent"
-              >
-                Sobre
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent"
-              >
-                Documentação
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent"
-              >
-                Comunidade
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent"
-              >
-                Contato
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       {/* LOGO DE BACKGROUND */}
       <div className="relative pt-20 flex justify-center items-center h-[80vh]">
@@ -154,7 +102,6 @@ export default function Home() {
             </p>
           </div>
         </Card>
-
       </div>
     </div>
   );

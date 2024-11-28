@@ -1,0 +1,105 @@
+'use client';
+import SalusLogo from "@/app/assets/SalusLogoV2.png";
+import Image from "next/image";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include', 
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        router.push('/comunidade');
+      } else {
+        setError(data.error || 'Erro ao fazer login');
+      }
+    } catch (error) {
+      console.error(error);
+      setError('Erro ao fazer login');
+    }
+  };
+
+  return (
+    <div
+      className="relative flex justify-center items-center min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url('/assets/images/bg-login.jpg')`,
+      }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md"></div>
+  
+      <div
+        className="relative z-10 w-full max-w-sm p-6 bg-black border-2 border-orange-500 rounded-lg shadow-md"
+        style={{
+          height: '500px', 
+        }}
+      >
+   
+        <div className="flex justify-center mb-4">
+          <Image
+            src={SalusLogo}
+            alt="Logo"
+            width={90}
+            height={90}
+            className="mr-4"
+          />
+        </div>
+        <h1 className="text-3xl font-bold text-white mb-4 text-center">Salus</h1>
+        <h1 className="text-2xl font-bold text-white mb-4 text-center">
+          Bem vindo novamente!
+        </h1>
+        <form onSubmit={handleLogin} className="space-y-4">
+          {error && <div className="text-red-500">{error}</div>}
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+            className="w-full p-2 border border-gray-500 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Senha"
+            required
+            className="w-full p-2 border border-gray-500 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
+          <button
+            type="submit"
+            className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600 transition"
+          >
+            Entrar
+          </button>
+        </form>
+        {/* Link para cadastro */}
+        <p className="text-center text-white mt-4">
+          Não tem uma conta?{' '}
+          <a href="/register" className="text-orange-500 hover:underline">
+            Cadastre-se!
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+  
+  
+};
+
+export default LoginPage;
