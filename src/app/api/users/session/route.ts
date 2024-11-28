@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 
   try {
     const token = cookie.split('token=')[1];
-    const payload = verifyToken(token); // Verifica o token
+    const payload = verifyToken(token); 
     const user = await query('SELECT username FROM users WHERE id = $1', [payload.userId]);
 
     if (!user.rows[0]) return NextResponse.json({ error: 'Usuário não encontrado' }, { status: 404 });

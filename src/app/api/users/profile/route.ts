@@ -3,8 +3,8 @@ import { verifyToken } from '@/app/lib/jwt';
 import { query } from '@/app/lib/db';
 
 interface DecodedToken {
-  userId: string; // Mudança de 'id' para 'userId'
-  [key: string]: any; // Caso existam outros campos
+  userId: string; 
+  [key: string]: any; 
 }
 
 export async function GET(request: Request) {
@@ -20,18 +20,18 @@ export async function GET(request: Request) {
   }
 
   try {
-    // Modificado para pegar 'userId' no token
+    
     const decodedToken = verifyToken(token) as DecodedToken;
     console.log('Token decodificado:', decodedToken);
 
-    // Verifica se o 'userId' existe no token
+    
     if (!decodedToken?.userId) {
       console.log('Token inválido, userId não encontrado');
       return NextResponse.json({ error: 'Token inválido' }, { status: 401 });
     }
 
     const res = await query('SELECT username, email FROM users WHERE id = $1', [
-      decodedToken.userId, // Mudança de 'id' para 'userId'
+      decodedToken.userId, 
     ]);
     console.log('Resultado da consulta:', res);
 

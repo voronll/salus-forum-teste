@@ -16,21 +16,6 @@ export default function Sidebar() {
               Início
             </Link>
           </li>
-          <li>
-            <Link href="/comunidade/page" className="hover:text-orange-400">
-              Documentação
-            </Link>
-          </li>
-          <li>
-            <Link href="/comunidade/" className="hover:text-orange-400">
-              Comunidade
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-orange-400">
-              Contato
-            </Link>
-          </li>
         </ul>
       </nav>
     </aside>

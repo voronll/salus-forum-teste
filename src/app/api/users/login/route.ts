@@ -20,16 +20,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Senha incorreta' }, { status: 401 });
     }
 
-    // Gera o token JWT
     const token = generateToken({ userId: user.rows[0].id });
     console.log('Token gerado:', token);
     
 
-
-    // Define o cookie com o token
     return NextResponse.json({ message: 'Login bem-sucedido' }, {
       headers: {
-        'Set-Cookie': `token=${token}; Path=/; HttpOnly; Secure; Max-Age=3600;`, // 1 hora
+        'Set-Cookie': `token=${token}; Path=/; HttpOnly; Secure; Max-Age=3600;`, 
       },
     });
   } catch (error) {

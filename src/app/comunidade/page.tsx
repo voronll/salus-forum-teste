@@ -1,5 +1,7 @@
 'use client'
+
 import { useEffect, useState } from "react"; 
+import { useRouter } from 'next/navigation';  
 import Header from "../components/header";
 import Sidebar from "../components/sidebar";
 
@@ -14,6 +16,7 @@ interface Post {
 export default function Comunidade() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();  
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,6 +34,10 @@ export default function Comunidade() {
     fetchPosts();
   }, []);
 
+  const handleAddPost = () => {
+    router.push('/criar');  
+  };
+
   return (
     <div className="bg-black min-h-screen">
       <Header /> 
@@ -38,8 +45,16 @@ export default function Comunidade() {
         <Sidebar /> 
         <main className="flex-1 p-8">
           <section className="py-8">
-            <h1 className="text-4xl font-bold text-white mb-6">Posts da Comunidade</h1>
-
+            <div className="flex items-center justify-between mb-6">
+              <h1 className="text-4xl font-bold text-white">Posts da Comunidade</h1>
+              <button
+                className="bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600"
+                onClick={handleAddPost}  
+              >
+                Adicionar Post
+              </button>
+            </div>
+  
             {loading ? (
               <p className="text-white">Carregando posts...</p>
             ) : (
