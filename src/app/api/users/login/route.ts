@@ -22,6 +22,9 @@ export async function POST(request: Request) {
 
     // Gera o token JWT
     const token = generateToken({ userId: user.rows[0].id });
+    console.log('Token gerado:', token);
+    
+
 
     // Define o cookie com o token
     return NextResponse.json({ message: 'Login bem-sucedido' }, {
@@ -33,4 +36,6 @@ export async function POST(request: Request) {
     console.error('Erro ao realizar login:', error);
     return NextResponse.json({ error: 'Erro no login' }, { status: 500 });
   }
+
+  
 }

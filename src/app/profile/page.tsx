@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Header from '../components/header';
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState<{ username: string; email: string } | null>(null);
@@ -39,7 +40,10 @@ const ProfilePage = () => {
   }
 
   return (
+    <div className="bg-black min-h-screen">
+    <Header /> 
     <div className="flex flex-col items-center justify-center min-h-screen">
+      
       <h1 className="text-3xl font-bold">Perfil do Usuário</h1>
       <div className="mt-4 p-4 border border-gray-300 rounded-lg max-w-md w-full">
         <p className="text-lg">
@@ -49,6 +53,7 @@ const ProfilePage = () => {
           <strong>Email:</strong> {userData.email}
         </p>
       </div>
+    </div>
     </div>
   );
 };
